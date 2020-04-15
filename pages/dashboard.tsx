@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const Dashboard: React.FC<{}> = () => (
   
     <div className="container">
@@ -20,6 +19,7 @@ const Dashboard: React.FC<{}> = () => (
       }
     `}</style>
   </div>
+  
     );
  
 

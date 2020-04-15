@@ -1,24 +1,38 @@
 import React from 'react';
 import Head from 'next/head'
-import Title from '../components/Title';
-import Link from 'next/link';
+import Image from 'components/Image';
+import Form from 'components/Form';
 
-const linkStyle = {
-    color: 'red'
-  };
 
 const Home: React.FC<{}> = () => (
-    <div className="container">
+    <>
         <Head>
             <title>Easyblue, assureur 100% digital pour les entrepreneurs</title>
             <link rel="icon" href="/easyblue.ico" />
         </Head>
+        <div>
+            <Image name='sand' width='300px'> </Image>
+        </div>
+        <Form />
+        <div className='henry'>
+            <Image name='henry-chill' width='200px'> </Image>
+        </div>
+        <div>
+            <Image name='buoy' width='100px'></Image>
+        </div>
 
-        <Title text="Test frontend." />
-        <Link href="/dashboard">
-            <a style={linkStyle}>Dashboard page</a>
-        </Link>
-    </div>
+        <style jsx global>{`
+      body {
+        background: #336FF2;
+      }
+    `}</style>
+        <style jsx>{`
+      .henry {
+        text-align: right;
+      }
+    `}</style>
+
+    </>
 );
 
 export default Home
