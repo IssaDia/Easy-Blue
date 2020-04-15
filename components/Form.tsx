@@ -1,108 +1,36 @@
 import React from 'react';
+import { Formik } from 'formik';
 
-const Form: React.FC = ({  }) => (
+const Form: React.FC = ({ }) => (
     <>
-       <section className="get-in-touch">
-   <h1 className="title">Easy Blue</h1>
-   <form className="contact-form row">
-      <div className="form-field col-lg-6">
-         <input id="name" className="input-text js-input" type="text" required />
-         <label className="label" >Name</label>
-      </div>
-      <div className="form-field col-lg-6 ">
-         <input id="email" className="input-text js-input" type="email" required />
-         <label className="label">E-mail</label>
-      </div>
-      <div className="form-field col-lg-12">
-         <input className="submit-btn" type="submit" value="Submit" />
-      </div>
-      <div className="form-field col-lg-12">
-         <input className="submit-btn" type="submit" value="Submit" />
-      </div>
-   </form>
-</section>
-<style jsx>{
-    `
-    .get-in-touch {
-      max-width: 400px;
-      margin: 50px auto;
-      position: relative;
-      background: #ffffff;
-    
-    }
-    .get-in-touch .title {
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 2em;
-      line-height: 48px;
-      padding-bottom: 48px;
-         color: #5543ca;
-        background: #5543ca;
-        background: -moz-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
-        background: -webkit-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
-        background: linear-gradient(to right,#f4524d  0%,#5543ca  100%) !important;
-        -webkit-background-clip: text !important;
-        -webkit-text-fill-color: transparent !important;
-    }
-    
-    .contact-form .form-field {
-      position: relative;
-      margin: 32px 0;
-    }
-    .contact-form .input-text {
-      display: block;
-      width: 100%;
-      height: 36px;
-      border-width: 0 0 2px 0;
-      border-color: #5543ca;
-      font-size: 18px;
-      line-height: 26px;
-      font-weight: 400;
-    }
-    .contact-form .input-text:focus {
-      outline: none;
-    }
-    .contact-form .input-text:focus + .label,
-    .contact-form .input-text.not-empty + .label {
-      -webkit-transform: translateY(-24px);
-              transform: translateY(-24px);
-    }
-    .contact-form .label {
-      position: absolute;
-      left: 20px;
-      bottom: 11px;
-      font-size: 18px;
-      line-height: 26px;
-      font-weight: 400;
-      color: #5543ca;
-      cursor: text;
-      transition: -webkit-transform .2s ease-in-out;
-      transition: transform .2s ease-in-out;
-      transition: transform .2s ease-in-out, 
-      -webkit-transform .2s ease-in-out;
-    }
-    .contact-form .submit-btn {
-      display: inline-block;
-      background-color: #000;
-       background-image: linear-gradient(125deg,#a72879,#064497);
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 16px;
-      padding: 8px 16px;
-      border: none;
-      width:200px;
-      cursor: pointer;
-    }
-    
-    
-    `
-}
+        <section className="get-in-touch">
+            <h1 className="title">Easy Blue</h1>
+            <Formik initialValues={{ email: '', password: '' }} onSubmit={(values) => console.log(values)
+            }>
+                {({ values, handleChange, handleBlur, handleSubmit }) => (
+                    <form className="contact-form row"  onSubmit={handleSubmit}>
+                        <div className="form-field col-lg-6 ">
+                            <input id="email" className="input-text js-input" type="email" required onChange={handleChange} defaultValue={values.email} onBlur={handleBlur}/>
+                            <label className="label">Adresse e-mail</label>
+                        </div>
+                        <div className="form-field col-lg-6">
+                            <input id="password" className="input-text js-input" type="text" required onChange={handleChange} defaultValue={values.password} onBlur={handleBlur} />
+                            <label className="label" >Mot de passe</label>
+                        </div>
+                        <div className="form-field col-lg-12">
+                            <input className="submit-btn" type="submit" value="CONNEXION" />
+                        </div>
+                        <div className="form-field col-lg-12">
+                            <input className="submit-btn" type="submit" value="MOT DE PASSE OUBLIE" />
+                        </div>
+                    </form>
+                )}
 
+            </Formik>
 
-</style>
-</>
+        </section>
+      
+    </>
 );
 
 export default Form;
