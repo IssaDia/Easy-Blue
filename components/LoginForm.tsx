@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import Error from './Error';
@@ -18,14 +18,12 @@ const validationSchema = Yup.object().shape({
 
 function LoginForm() {
 
-    const [credentials, setcredentials] = useState({email: "user@domain.tld", 
-    password: "123456789"})
+
     return <>
 
         <Formik initialValues={{ email: '', password: '' }} validationSchema={validationSchema} onSubmit={async (values, { setSubmitting }) => {
             setSubmitting(true);
-            setcredentials(values);
-
+           
             const apiUrl = `http://localhost:3000/api/login`;
             const res = await fetch(apiUrl, {
                 method: 'POST',
@@ -33,7 +31,7 @@ function LoginForm() {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(credentials)
+                body: JSON.stringify(values)
             });
             const authStatus = await res.json();
 
