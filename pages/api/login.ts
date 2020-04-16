@@ -1,19 +1,18 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-
-const credentials = {
-    email: "user@domain.tld",
-    password: "123456789"
-};
+import sqlite from 'sqlite';
 
 
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+    const db = await sqlite.open('./mydb.sqlite');
+    const users = await db.all('SELECT * FROM Users');
+    const credentials = {email:'user@domain.tld', password:'hello'};
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
 
-    if (req.method === 'POST') {
+    if ( Object.is(req.body, credentials) ) {
   
-            return res.json({valid : true});
+            return res.json({valid: true});
      
     } else {
-        return res.status(405).send('Invalid method');
+        return res.json(credentials);
     }
 }

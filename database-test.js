@@ -1,6 +1,3 @@
-
-
-
 const sqlite = require('sqlite');
 
 async function setup() {
