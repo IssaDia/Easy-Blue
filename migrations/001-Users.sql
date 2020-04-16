@@ -2,11 +2,11 @@
 
 CREATE TABLE Users (
     id INTEGER PRIMARY KEY,
+    name TEXT,
     email TEXT,
     password TEXT
 );
 
-INSERT INTO Users (email, password) values ('user@domain.tld','123456789');
 
 -- Down
 DROP TABLE Users;

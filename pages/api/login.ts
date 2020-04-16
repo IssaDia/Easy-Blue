@@ -1,18 +1,27 @@
+import { compare } from 'bcrypt';
+import { sign } from 'jsonwebtoken';
 import { NextApiRequest, NextApiResponse } from 'next';
 import sqlite from 'sqlite';
+import { secret } from '../../api/secret';
 
-const credentials = {email:'user@domain.tld', password:'hello'};
+export default async function login(req: NextApiRequest, res: NextApiResponse) {
+  const db = await sqlite.open('./mydb.sqlite');
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
-    const db = await sqlite.open('./mydb.sqlite');
-    const users = await db.all('SELECT email, password FROM Users');
+  if (req.method === 'POST') {
+    const user = await db.get('select * from Users where email = ?', [
+      req.body.email
+    ]);
 
-    if (Object.is(credentials, req.body) ) {
-  
-            return res.json({value : true});
-     
-    } else {
-        return res.json(credentials);
-    }
+    compare(req.body.password, user.password, function(err, result) {
+      if (!err && result) {
+        const claims = { sub: user.id, myPersonEmail: user.email };
+        const jwt = sign(claims, secret, { expiresIn: '1h' });
+        res.json({ authToken: jwt });
+      } else {
+        res.json({ message: 'Ups, something went wrong!' });
+      }
+    });
+  } else {
+    res.status(405).json({ message: 'We only support POST' });
+  }
 }
-
