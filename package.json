@@ -9,10 +9,12 @@
   },
   "dependencies": {
     "@types/bcrypt": "^3.0.0",
+    "@types/cookie": "^0.3.3",
     "@types/jsonwebtoken": "^8.3.9",
     "@types/reactstrap": "^8.4.2",
     "@types/yup": "^0.26.36",
     "bcrypt": "^4.0.1",
+    "cookie": "^0.4.0",
     "formik": "^2.1.4",
     "isomorphic-unfetch": "^3.0.0",
     "jsonwebtoken": "^8.5.1",

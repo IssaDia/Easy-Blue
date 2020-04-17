@@ -7,6 +7,8 @@ export default async function signup(
   res: NextApiResponse
 ) {
   const db = await sqlite.open('./mydb.sqlite');
+  await db.migrate({force: 'last'});
+
 
   if (req.method === 'POST') {
     hash(req.body.password, 10, async function(err, hash) {

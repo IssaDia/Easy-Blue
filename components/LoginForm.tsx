@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import Error from './Error';
 import fetch from 'isomorphic-unfetch';
-
-
+import Router from 'next/router'
 
 
 const validationSchema = Yup.object().shape({
@@ -14,16 +13,13 @@ const validationSchema = Yup.object().shape({
     password: Yup.string().required('votre mot de passe est requis')
 })
 
-
-
 function LoginForm() {
 
-
+    const [errorLogin, seterrorLogin] = useState(false);
     return <>
-
         <Formik initialValues={{ email: '', password: '' }} validationSchema={validationSchema} onSubmit={async (values, { setSubmitting }) => {
             setSubmitting(true);
-           
+
             const apiUrl = `http://localhost:3000/api/login`;
             const res = await fetch(apiUrl, {
                 method: 'POST',
@@ -34,9 +30,14 @@ function LoginForm() {
                 body: JSON.stringify(values)
             });
             const authStatus = await res.json();
-
             console.log(authStatus);
+            if (authStatus.valid) {
+                Router.push('/dashboard')
+            }
 
+            else {
+                seterrorLogin(true);
+            }
 
         }}>
             {({ touched, values, errors, handleBlur, handleChange, handleSubmit, isSubmitting }) => (
@@ -68,22 +69,17 @@ function LoginForm() {
                         <Error touched={touched.password} message={errors.password}></Error>
                     </div>
                     <button type="submit" className='btn btn-white' disabled={isSubmitting}>Submit</button>
+                    {errorLogin ? <div>error</div> : null}
                 </form>
             )}
-
         </Formik>
         <style jsx >{`
       .valid-feedback {
         color: green;
       }
     `}</style>
-
-
-
     </>
 };
-
-
 
 export default LoginForm;
 
