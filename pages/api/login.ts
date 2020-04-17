@@ -11,10 +11,10 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
 
   if (req.method === 'POST') {
 
-    
+
     const user = await db.get('select email from Users');
 
-    if (req.body.email != user.email ) {
+    if (req.body.email != user.email) {
       res.json({ valid: false });
     }
 
