@@ -12,7 +12,7 @@ const Error = ({touched, message}) => {
         return <div className={styles.invalid}>{message}</div>;
     }
 
-    return <div className={styles.valid}>all good</div>
+    return null;
     ;
 }
 
