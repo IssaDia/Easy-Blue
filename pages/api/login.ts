@@ -10,13 +10,21 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
   const db = await sqlite.open('./mydb.sqlite');
 
   if (req.method === 'POST') {
-    const user = await db.get('select * from Users where email = ?', [
+
+    
+    const user = await db.get('select email from Users');
+
+    if (req.body.email != user.email ) {
+      res.json({ valid: false });
+    }
+
+    const rightUser = await db.get('select * from Users where email = ?', [
       req.body.email
     ]);
 
-    compare(req.body.password, user.password, function (err, result) {
+    compare(req.body.password, rightUser.password, function (err, result) {
       if (!err && result) {
-        const claims = { sub: user.id, myPersonEmail: user.email };
+        const claims = { sub: rightUser.id, myPersonEmail: rightUser.email };
         const jwt = sign(claims, secret);
         res.setHeader('Set-Cookie', cookie.serialize('auth', jwt, {
           httpOnly: true,
@@ -27,7 +35,7 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
         }))
         res.json({ valid: true });
       } else {
-        res.json({ message: 'Oops, une erreur est survenue!' });
+        res.json({ valid: false });
       }
     });
   } else {
