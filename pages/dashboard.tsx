@@ -1,26 +1,21 @@
-import React from 'react';
+import { NextPage } from 'next'
 
-const Dashboard: React.FC<{}> = () => (
-  
-    <div className="container">
-    <h1>Hello Next.js</h1>
-    <p>Let's explore different ways to style Next.js apps</p>
-    <style jsx>{`
-      .container {
-        margin: 50px;
-      }
-      p {
-        color: blue;
-      }
-    `}</style>
-    <style jsx global>{`
-      body {
-        background: #f7f7f7;
-      }
-    `}</style>
-  </div>
-  
-    );
- 
+interface Props {
+  userAgent?: string;
+}
 
-  export default Dashboard;
+const Page: NextPage<Props> = ({ userAgent }) => (
+  <main>Your user agent: {userAgent}</main>
+)
+
+Page.getInitialProps = async  (context)  => {
+  const { store, isServer, query, req } = context;
+    if (isServer) {
+      if (isServer) {
+         console.log(req.cookies);
+      }
+    }
+    return { isServer };
+}
+
+export default Page

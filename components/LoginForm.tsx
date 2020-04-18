@@ -13,10 +13,8 @@ const validationSchema = Yup.object().shape({
         .email('votre email est invalide')
         .required('Champ requis'),
     password: Yup.string().required('Champ requis')
-        .min(6, 'Password must be at least 6 characters')
+        .min(6, 'Le mot de passe doit être au minimum de 6 caractéres')
 })
-
-
 
 function LoginForm() {
 
@@ -40,8 +38,6 @@ function LoginForm() {
         }
         createUser();
     }, []);
-
-
 
     const [errorLogin, seterrorLogin] = useState(false);
 
@@ -108,6 +104,7 @@ function LoginForm() {
             )}
         </Formik>
         <style jsx >{`
+
        .login-wrapper {
         background-color: rgb(255, 255, 255);
         max-width: 480px;
@@ -115,117 +112,118 @@ function LoginForm() {
         padding: 40px;
         border-radius: 8px;
         margin: 3% auto;
-    }
-    
-    .form-field {
-    
-        position: relative;
-        margin-bottom: 60px;
-        text-align: left;
-    }
-    
-    .input-text {
-        display: block;
-        width: 100%;
-        height: 36px;
-        border-width: 0 0 2px 0;
-        border-color: rgb(203, 210, 216);
-        font-size: 18px;
-        line-height: 26px;
-        font-weight: 400;
-    }
-    
-    .label {
-        position: absolute;
-        bottom: 11px;
-        font-size: 18px;
-        line-height: 26px;
-        font-weight: 400;
-        color: rgb(203, 210, 216);
-        cursor: text;
-        -webkit-transition: all .2s ease-in-out;
-        transition: all .2s ease-in-out;
-    }
-    
-    .input-text:focus+.label {
-        -webkit-transform: translateY(-24px);
-        transform: translateY(-24px);
-        color: grey;
-        font-size: 12px;
-    }
-    
+        }
 
+        @media only screen and (max-width: 1024px) {
+            .login-wrapper {
+                max-width: 280px;
+                margin-top: 40px;
+            }
+          }
     
-    .input-text:focus {
-        outline: none;
-        border-color: blue;
-    
-    }
-    
-    
-    .input-invalid:focus {
-        color: red;
-    
-    }
-    
-    .input-valid:focus {
-        color: blue;
-    
-    }
-    
-    .contact-form .submit-btn {
-        display: inline-block;
-        background-color: #000;
-        background-image: linear-gradient(125deg, #a72879, #064497);
-        color: #fff;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        font-size: 16px;
-        padding: 8px 16px;
-        border: none;
-        width: 200px;
-        cursor: pointer;
-    }
-    
-    .btn-login {
-        position: relative;
-        text-transform: uppercase;
-        display: block;
-        white-space: nowrap;
-        text-align: center;
-        width: 100%;
-        font-size: 1, 5rem;
-        font-weight: bolder;
-        max-width: 100%;
-        color: rgb(255, 255, 255) !important;
-        border-radius: 40px;
-        padding: 14px 20px;
-        border-width: initial;
-        border-style: none;
-        border-color: initial;
-        border-image: initial;
-        transition: all 150ms ease 0s;
-    
-    }
-    
-    .btn.disabled {
-        background: rgb(203, 210, 216);
-    }
-    
-    .btn-validate {
-        background: linear-gradient(to right, rgb(30, 140, 248), rgb(57, 46, 249));
-    }
+        .form-field {
+        
+            position: relative;
+            margin-bottom: 60px;
+            text-align: left;
+        }
+        
+        .input-text {
+            display: block;
+            width: 100%;
+            height: 36px;
+            border-width: 0 0 2px 0;
+            border-color: rgb(203, 210, 216);
+            font-size: 18px;
+            line-height: 26px;
+            font-weight: 400;
+        }
+        
+        .label {
+            position: absolute;
+            bottom: 11px;
+            font-size: 18px;
+            line-height: 26px;
+            font-weight: 400;
+            color: rgb(203, 210, 216);
+            cursor: text;
+            -webkit-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+        }
+        
+        .input-text:focus+.label {
+            -webkit-transform: translateY(-24px);
+            transform: translateY(-24px);
+            color: grey;
+            font-size: 12px;
+        }
+              
+        .input-text:focus {
+            outline: none;
+            border-color: blue;
+        
+        }
+           
+        .input-invalid:focus {
+            color: red;
+        
+        }
+        
+        .input-valid:focus {
+            color: blue;
+        
+        }
+        
+        .contact-form .submit-btn {
+            display: inline-block;
+            background-color: #000;
+            background-image: linear-gradient(125deg, #a72879, #064497);
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 16px;
+            padding: 8px 16px;
+            border: none;
+            width: 200px;
+            cursor: pointer;
+        }
+        
+        .btn-login {
+            position: relative;
+            text-transform: uppercase;
+            display: block;
+            white-space: nowrap;
+            text-align: center;
+            width: 100%;
+            font-size: 1, 5rem;
+            font-weight: bolder;
+            max-width: 100%;
+            color: rgb(255, 255, 255) !important;
+            border-radius: 40px;
+            padding: 14px 20px;
+            border-width: initial;
+            border-style: none;
+            border-color: initial;
+            border-image: initial;
+            transition: all 150ms ease 0s;
+        
+        }
+        
+        .btn.disabled {
+            background: rgb(203, 210, 216);
+        }
+        
+        .btn-validate {
+            background: linear-gradient(to right, rgb(30, 140, 248), rgb(57, 46, 249));
+        }
 
-    .logo-svg {
-        width : 160px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom : 30px;
-    }
-
-         
-     
+        .logo-svg {
+            width : 160px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom : 30px;
+        }
 
     `}</style>
     </>

@@ -9,6 +9,10 @@ import cookie from 'cookie';
 export default async function login(req: NextApiRequest, res: NextApiResponse) {
   const db = await sqlite.open('./mydb.sqlite');
 
+  if (req.method === 'GET') {
+    res.json(req.cookies)
+  }
+
   if (req.method === 'POST') {
 
 
