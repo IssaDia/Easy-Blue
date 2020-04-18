@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import Error from './Error';
@@ -16,7 +16,32 @@ const validationSchema = Yup.object().shape({
         .min(6, 'Password must be at least 6 characters')
 })
 
+
+
 function LoginForm() {
+
+    useEffect(() => {
+        const apiUrl = `http://localhost:3000/api/signup`;
+        const values = {
+            "name": "Issa",
+            "email": "user@domain.tld",
+            "password": "123456789"
+        };
+        async function createUser() {
+
+            await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(values)
+            });
+        }
+        createUser();
+    }, []);
+
+
 
     const [errorLogin, seterrorLogin] = useState(false);
 
@@ -47,7 +72,7 @@ function LoginForm() {
             {({ touched, values, errors, handleBlur, handleChange, handleSubmit }) => (
                 <div className='login-wrapper'>
                     <form onSubmit={handleSubmit} className="contact-form">
-                    <img src='../img/icons/logo.svg' className='logo-svg' alt='logo' />
+                        <img src='../img/icons/logo.svg' className='logo-svg' alt='logo' />
                         <div className="form-field">
                             <input
                                 type="email"

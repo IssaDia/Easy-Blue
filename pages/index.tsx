@@ -1,10 +1,10 @@
 import React from 'react';
 import Head from 'next/head'
-import Image from 'components/Image';
 import LoginForm from 'components/LoginForm';
 
 
 const Home: React.FC<{}> = () => (
+  
   <>
     <Head>
       <title>Easyblue, assureur 100% digital pour les entrepreneurs</title>
@@ -14,26 +14,26 @@ const Home: React.FC<{}> = () => (
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </Head>
     
-      <div>
-        <Image name='sand' width='300px'> </Image>
-      </div>
+      <div className='login-container'>
+       
       <LoginForm />
-      <div className='henry'>
-        <Image name='henry-chill' width='200px'> </Image>
-      </div>
-      <div>
-        <Image name='buoy' width='100px'></Image>
       </div>
 
-      <style jsx global>{`
-      body {
-        background: #336FF2;
-      }
-    `}</style>
       <style jsx>{`
-      .henry {
-        text-align: right;
-      }
+     
+ 
+      .login-container {
+        z-index: 2;
+        background-color: rgb(30, 140, 248);
+        background-image: url("./henry-chill.png"),url("./buoy.png"),url("./sand.png");
+        background-size: auto 40vh, auto 20vh, auto 50vh, contain;
+    min-height: 100vh;
+    position: absolute;
+    width: 100%;
+    background-position: right 5% top 50%, left 5% bottom 5%, left top, center center;
+    background-repeat: no-repeat;
+}
+      
     `}</style>
 
       
