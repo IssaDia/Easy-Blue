@@ -3,6 +3,7 @@ import { NextPageContext } from 'next';
 import CustomNavbar from 'components/CustomNavbar';
 import Head from 'next/head'
 import Card from 'components/Card';
+import Timeline from 'components/Timeline';
 
 
 
@@ -20,6 +21,7 @@ function Dashboard({ cookie }) {
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;800&display=swap" rel="stylesheet"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet"></link>
       </Head>
 
       <CustomNavbar />
@@ -28,7 +30,7 @@ function Dashboard({ cookie }) {
         <p className='dashboard-subtitle'>Retrouvez ci-dessous la liste des contrats auxquels vous avez souscrit.</p>
         <div className="col-sm-6 my-auto">
           <div id='card-style'>
-            <Card name='user' title='Moi et ma societé' buttonText='Voir mes informations' cardText='341 Chasity Overpass, Runolfsson Walks 33282 Johnsmouth, France' subtitle='company_company (8866897594584437374)'></Card>
+            <Card name='user' title='Moi et ma societé' buttonText='Voir mes informations' cardText='341 Chasity Overpass France' subtitle='company_company (8866897594584437374)'></Card>
           </div>
           <div id='card-style'>
             <Card name='cb' title='Mon mode de paiement' buttonText='Editer mon mode de paiement' cardText='**** **** ****' subtitle='CB visa'></Card>
@@ -37,15 +39,28 @@ function Dashboard({ cookie }) {
             <Card name='doc' title='Mes derniéres quittances' buttonText='Afficher toutes mes quittances' subtitle='avril 2017'></Card>
           </div>
         </div>
+        <div className="col-sm-6">
+          <Timeline />
+        </div>
       </div>
+
       <style jsx>{`
   .dashboard-container {
     
     background: #f7f7f7;
     height : 2000px;
     text-align: center;
+    
   
   }
+
+  @media screen and (max-width: 640px) {
+    .dashboard-container {
+      width: fit-content;
+    }
+  }
+
+
   .dashboard-title {
     width :100%;
     display: block;
@@ -65,9 +80,11 @@ function Dashboard({ cookie }) {
   }
 
   #card-style {
-    margin-top: 40px;
+    margin-top:30px;
     margin-bottom: 40px;
   }
+
+
 
 
 `}</style>

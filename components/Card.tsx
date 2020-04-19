@@ -39,18 +39,21 @@ const Card: React.FC<Props> = ({name, title, buttonText, cardText, subtitle }) =
 
   
   .card-container{
-    width: 450px;
-    height: 450px;
+  
+    width : 450px;
     background: #FFF;
     border-radius: 8px;
     box-shadow: 0px 1px 10px 1px #405070;
     overflow: hidden;
     display: inline-block;
+    
   }
-  
+
+
   .upper-container{
     height: 150px;
     background: #EAEFF8;
+    
   }
   
   .image-container{
@@ -79,7 +82,8 @@ const Card: React.FC<Props> = ({name, title, buttonText, cardText, subtitle }) =
   .lower-container h3, h4{
     box-sizing: border-box;
     line-height: .6;
-    font-weight: bold; 
+    font-weight: bold;
+    font-size : 15px;
   }
   
   .lower-container h4{
@@ -90,9 +94,9 @@ const Card: React.FC<Props> = ({name, title, buttonText, cardText, subtitle }) =
   
   .lower-container p{
     color: gray;
-    font-size: 16px;  
+    font-size: 10px;  
     margin-bottom: 30px;
-    font-weight: light;
+    
   }
   
   .lower-container .btn{
@@ -112,14 +116,6 @@ const Card: React.FC<Props> = ({name, title, buttonText, cardText, subtitle }) =
     color: #28C3F5;
     border: 1px solid #28C3F5;
   }
-  
-  
-  
-  
-
-
-
-
     `}</style>
     </>
 );
