@@ -12,8 +12,6 @@ function Dashboard() {
   /**
   * Notification when user enters the Dashboard (TO DO : personnalize it!)
   */
-
-
   useEffect(() => {
 
     store.addNotification({
@@ -69,8 +67,6 @@ function Dashboard() {
     background: #f7f7f7;
     height : 2000px;
     text-align: center;
-    
-  
   }
 
   @media screen and (max-width: 640px) {
@@ -78,7 +74,6 @@ function Dashboard() {
       width: fit-content;
     }
   }
-
 
   .dashboard-title {
     width :100%;
@@ -92,10 +87,8 @@ function Dashboard() {
   }
 
   .dashboard-subtitle {
-    
     color : #9BA7B1;
     font-family: 'Baloo Tamma 2', cursive;
-    
   }
 
   #card-style {
@@ -107,24 +100,18 @@ function Dashboard() {
 
 }
 
-
   /**
   * Tried to grab the cookie on load to give or not the access to dashboard (To DO : find a way to secure Dashboard page)
   */
-
 Dashboard.getInitialProps = async (ctx) => {
 
   const userCookie = cookies(ctx);
-
   if (userCookie) {
     return { auth: userCookie.auth || '' }
   }
-
   else {
     return {}
   }
-
-
 }
 
 export default Dashboard;
