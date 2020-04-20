@@ -1,3 +1,7 @@
+/**
+  * Schema of user table on SQLlite.
+  */
+
 --UP
 
 CREATE TABLE Users (

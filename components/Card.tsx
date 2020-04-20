@@ -1,45 +1,43 @@
-import React from 'react';
+import React from 'react'
+
+/**
+  * Required props of Card component with an optionnal props
+  */
 
 interface Props {
-    name : string,
-    title : string,
-    buttonText: string,
-    cardText?: string,
-    subtitle : string
- 
+  name: string,
+  title: string,
+  buttonText: string,
+  cardText?: string,
+  subtitle: string
+
 }
 
-const Card: React.FC<Props> = ({name, title, buttonText, cardText, subtitle }) => (
-    <>
-        <div className="card-container">
-            <div className="upper-container">
-                <div className="image-container">
-                <img src={`../img/icons/${name}.svg`} alt={`${name}`} />
-                </div>
-            </div>
-
-            <div className="lower-container">
-                <div>
-                    <h3>{title}</h3>
-                    
-                </div>
-                <div className={`${name}`}>
-                  <p>{subtitle}</p>
-                    <p>{cardText}</p>
-                </div>
-                <div>
-                    <a href="#" className="btn">{buttonText}</a>
-
-                </div>
-            </div>
+const Card: React.FC<Props> = ({ name, title, buttonText, cardText, subtitle }) => (
+  <>
+    <div className="card-container">
+      <div className="upper-container">
+        <div className="image-container">
+          <img src={`../img/icons/${name}.svg`} alt={`${name}`} />
         </div>
+      </div>
+      <div className="lower-container">
+        <div>
+          <h3>{title}</h3>
+        </div>
+        <div className={`${name}`}>
+          <p>{subtitle}</p>
+          <p>{cardText}</p>
+        </div>
+        <div>
+          <a href="#" className="btn">{buttonText}</a>
+        </div>
+      </div>
+    </div>
 
-                <style jsx>{`
-  
+    <style jsx>{`
 
-  
   .card-container{
-  
     width : 450px;
     background: #FFF;
     border-radius: 8px;
@@ -49,7 +47,6 @@ const Card: React.FC<Props> = ({name, title, buttonText, cardText, subtitle }) =
     
   }
 
-
   .upper-container{
     height: 150px;
     background: #EAEFF8;
@@ -57,7 +54,6 @@ const Card: React.FC<Props> = ({name, title, buttonText, cardText, subtitle }) =
   }
   
   .image-container{
-    
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -95,8 +91,7 @@ const Card: React.FC<Props> = ({name, title, buttonText, cardText, subtitle }) =
   .lower-container p{
     color: gray;
     font-size: 10px;  
-    margin-bottom: 30px;
-    
+    margin-bottom: 30px;  
   }
   
   .lower-container .btn{
@@ -117,7 +112,7 @@ const Card: React.FC<Props> = ({name, title, buttonText, cardText, subtitle }) =
     border: 1px solid #28C3F5;
   }
     `}</style>
-    </>
+  </>
 );
 
 export default Card;

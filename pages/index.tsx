@@ -1,8 +1,6 @@
-import React from 'react';
+import React from 'react'
 import Head from 'next/head'
-import LoginForm from 'components/LoginForm';
-
-
+import LoginForm from 'components/LoginForm'
 
 const Home: React.FC<{}> = () => (
   
@@ -24,7 +22,7 @@ const Home: React.FC<{}> = () => (
       .login-container {
         z-index: 2;
         background-color: rgb(30, 140, 248);
-        background-image: url("./henry-chill.png"),url("./buoy.png"),url("./sand.png");
+        background-image: url("./img/icons/henry-chill.png"),url("./img/icons/buoy.png"),url("./img/icons/sand.png");
         background-size: auto 40vh, auto 20vh, auto 50vh, contain;
         min-height: 100vh;
         position: absolute;

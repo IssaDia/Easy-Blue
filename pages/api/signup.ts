@@ -2,6 +2,10 @@ import { hash } from 'bcrypt';
 import { NextApiRequest, NextApiResponse } from 'next';
 import sqlite from 'sqlite';
 
+/**
+  * Api route to create new user on database with an hashed password
+  */
+
 export default async function signup(
   req: NextApiRequest,
   res: NextApiResponse

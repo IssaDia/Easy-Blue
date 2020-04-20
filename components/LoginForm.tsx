@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Formik } from 'formik';
-import * as Yup from 'yup';
-import Error from './Error';
-import fetch from 'isomorphic-unfetch';
-import Router from 'next/router';
-import styles from './Error.module.css';
+import React, { useState, useEffect } from 'react'
+import { Formik } from 'formik'
+import * as Yup from 'yup'
+import Error from './Error'
+import fetch from 'isomorphic-unfetch'
+import Router from 'next/router'
 
-
+/**
+  * Form verification with Yup library
+  */
 
 const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -16,7 +17,16 @@ const validationSchema = Yup.object().shape({
         .min(6, 'Le mot de passe doit être au minimum de 6 caractéres')
 })
 
+
+/**
+  * Form 
+  */
+
 function LoginForm() {
+
+    /**
+     * Create an User on database via an Api route (To Do : create a sign up form!)
+     */
 
     useEffect(() => {
         const apiUrl = `http://localhost:3000/api/signup`;
@@ -39,11 +49,19 @@ function LoginForm() {
         createUser();
     }, []);
 
+    /**
+      * Boolean value to trigger message error when credentials are wrong
+      */
+
     const [errorLogin, seterrorLogin] = useState(false);
 
     return <>
         <Formik initialValues={{ email: '', password: '' }} validationSchema={validationSchema} onSubmit={async (values, { setSubmitting }) => {
             setSubmitting(true);
+
+            /**
+              * Call to Api route to check and give authorization to the Dashboard
+              */
 
             const apiUrl = `http://localhost:3000/api/login`;
             const res = await fetch(apiUrl, {
@@ -55,7 +73,6 @@ function LoginForm() {
                 body: JSON.stringify(values)
             });
             const authStatus = await res.json();
-            console.log(authStatus);
             if (authStatus.valid) {
                 Router.push('/dashboard')
             }
@@ -96,8 +113,7 @@ function LoginForm() {
                         <div>
                             <button type="submit" className={'btn btn-login ' + ((touched.email && !errors.email) && !errors.password ? 'btn-validate' : 'disabled')} >connexion</button>
                         </div>
-
-                        {errorLogin ? <div className={"text-center " + styles.invalid} >votre mot de passe ou votre email est invalide</div> : null}
+                        {errorLogin ? <div className="text-center invalid " >votre mot de passe ou votre email est invalide</div> : null}
                     </form>
                 </div>
 
@@ -229,7 +245,5 @@ function LoginForm() {
     </>
 };
 
+
 export default LoginForm;
-
-
-

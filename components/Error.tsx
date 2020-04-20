@@ -1,7 +1,9 @@
-import  React from 'react';
-import styles from './Error.module.css';
+import  React from 'react'
+import styles from './Error.module.css'
 
-
+/**
+  * Error component, called when Form error through Yup
+  */
 
 const Error = ({touched, message}) => {
     if (!touched) {
@@ -9,12 +11,11 @@ const Error = ({touched, message}) => {
     }
 
     if (message) {
-        return <div className={styles.invalid}>{message}</div>;
+        return <div className='invalid'>{message}</div>;
     }
 
     return null;
     ;
 }
-
 
 export default Error;

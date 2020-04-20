@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+  * Exemple of React component in NextJs
+  */
 interface Props {
     text: string;
 }
