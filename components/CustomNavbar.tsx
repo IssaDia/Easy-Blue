@@ -7,18 +7,22 @@ import React from 'react'
 const CustomNavbar: React.FC<{}> = () => (
     <>
         <div className='nav-wrapper'>
-            <div className="col-sm-2">
-                <div id="webapp_cover">
-                    <div id="menu_button">
-                        <input type="checkbox" id="menu_checkbox" />
-                        <label htmlFor="menu_checkbox" id="menu_label">
-                            <div id="menu_text_bar"></div>
-                        </label>
+            <div className='row'>
+                <div className="col-sm-12">
+                    <div id="webapp_cover">
+                        <div id="menu_button">
+                            <input type="checkbox" id="menu_checkbox" />
+                            <label htmlFor="menu_checkbox" id="menu_label">
+                                <div id="menu_text_bar"></div>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div className="col-sm-10">
-                <img src='../img/icons/logo.svg' className='logo-svg' alt='logo' />
+            <div className='row'>
+                <div className="col-sm-12">
+                    <img src='../img/icons/logo.svg' className='logo-svg' alt='logo' />
+                </div>
             </div>
         </div>
 

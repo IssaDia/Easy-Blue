@@ -52,8 +52,8 @@ function Dashboard() {
           <Timeline />
         </div>
       </div>
-
-      <style jsx>{`
+    
+    <style jsx>{`
   .dashboard-container {
     
     background: #f7f7f7;
@@ -88,7 +88,7 @@ function Dashboard() {
     margin-bottom: 40px;
   }
 `}</style>
-    </Layout>
+</Layout>
   </>
 
 }
