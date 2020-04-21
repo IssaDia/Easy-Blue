@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import Error from './Error'
@@ -17,38 +17,11 @@ const validationSchema = Yup.object().shape({
         .min(6, 'Le mot de passe doit être au minimum de 6 caractéres')
 })
 
-
 /**
   * Form 
   */
 
 function LoginForm() {
-
-    /**
-     * Create an User on database via an Api route (To Do : create a sign up form!)
-     */
-
-    useEffect(() => {
-        const apiUrl = `http://localhost:3000/api/signup`;
-        const values = {
-            "name": "Issa",
-            "email": "user@domain.tld",
-            "password": "123456789"
-        };
-        async function createUser() {
-
-            await fetch(apiUrl, {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(values)
-            });
-        }
-        createUser();
-    }, []);
-
     /**
       * Boolean value to trigger message error when credentials are wrong
       */
@@ -245,5 +218,29 @@ function LoginForm() {
     </>
 };
 
+/**
+* Create an User on database via an Api route (To Do : create a sign up form!)
+*/
+LoginForm.getInitialProps = async () => {
+
+    const apiUrl = `http://localhost:3000/api/signup`;
+        const values = {
+            "name": "Issa",
+            "email": "user@domain.tld",
+            "password": "123456789"
+        };
+        async function createUser() {
+
+            await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(values)
+            });
+        }
+        createUser();
+  }
 
 export default LoginForm;
