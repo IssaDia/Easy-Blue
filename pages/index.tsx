@@ -1,21 +1,15 @@
 import React from 'react'
-import Head from 'next/head'
 import LoginForm from 'components/LoginForm'
+import Layout from 'components/Layout';
 
-const Home: React.FC<{}> = () => (
-  <>
-    <Head>
-      <title>Easyblue, assureur 100% digital pour les entrepreneurs</title>
-      <link rel="icon" href="/easyblue.ico" />
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    </Head>
-      <div className='login-container'> 
+function Home() {
+
+  return <>
+    <Layout>
+      <div className='login-container'>
         <LoginForm />
       </div>
       <style jsx>{`
-     
       .login-container {
         z-index: 2;
         background-color: rgb(30, 140, 248);
@@ -35,7 +29,8 @@ const Home: React.FC<{}> = () => (
       }
       
     `}</style>
+    </Layout>
   </>
-);
+};
 
 export default Home
